@@ -1,6 +1,6 @@
 [
-  "https://github.com/heyplanet-app/satellite-files/releases/latest/download/files.satellite",
-  "https://github.com/heyplanet-app/satellite-simple-git-server/releases/latest/download/simple-git-server.satellite",
-  "https://github.com/heyplanet-app/satellite-checklist/releases/latest/download/checklist.satellite",
-  "https://github.com/heyplanet-app/satellite-ssh/releases/latest/download/satellite-ssh.satellite"
+  "https://github.com/heyplanet-app/satellite-files",
+  "https://github.com/heyplanet-app/satellite-simple-git-server",
+  "https://github.com/heyplanet-app/satellite-checklist",
+  "https://github.com/heyplanet-app/satellite-ssh"
 ]

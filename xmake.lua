@@ -3,9 +3,10 @@
 --
 --   xmake validate        check apps.json
 --
--- apps.json is a list of package addresses. planet installs each by
--- downloading it (crates/planet-web/src/store.rs); the file name names the
--- installed app.
+-- apps.json is a list of GitHub repository addresses. planet reads the rest
+-- from each repository (crates/planet-web/src/store.rs): name, description
+-- and version from manifest.yaml, the icon from icon.* at its root, the
+-- package from <manifest id>.satellite in its newest release.
 
 set_project("planet-avenue")
 
@@ -16,25 +17,19 @@ task("validate")
 
         local list = json.loadfile(path.join(os.projectdir(), "apps.json"))
         local errors = {}
-        local names = {}
+        local seen = {}
         if type(list) ~= "table" or (#list == 0 and next(list) ~= nil) then
-            table.insert(errors, "apps.json must be a list of addresses")
+            table.insert(errors, "apps.json must be a list of repository addresses")
             list = {}
         end
         for i, url in ipairs(list) do
-            if type(url) ~= "string" or not url:match("^https://") then
-                table.insert(errors, format("[%d]: %s is not an https:// address", i, tostring(url)))
+            local repo = type(url) == "string" and url:match("^https://github%.com/([%w_.%-]+/[%w_.%-]+)/?$")
+            if not repo then
+                table.insert(errors, format("[%d]: %s is not https://github.com/<owner>/<name>", i, tostring(url)))
+            elseif seen[repo:lower()] then
+                table.insert(errors, format("[%d]: %s is already listed", i, repo))
             else
-                local name = url:match("([^/?#]+%.satellite)$")
-                if not name then
-                    table.insert(errors, format("[%d]: %s doesn't end in a .satellite file name", i, url))
-                elseif names[name] then
-                    -- The file name is the installed app's id: two with the
-                    -- same one would replace each other.
-                    table.insert(errors, format("[%d]: %s is already listed", i, name))
-                else
-                    names[name] = true
-                end
+                seen[repo:lower()] = true
             end
         end
 
