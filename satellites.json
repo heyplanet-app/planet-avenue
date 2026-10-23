@@ -1,0 +1,34 @@
+{
+  "$schema": "./satellites.schema.json",
+  "schemaVersion": "v1",
+  "satellites": [
+    {
+      "id": "files",
+      "name": "Files",
+      "description": "简洁现代的文件服务器：浏览、拖拽上传、预览、音乐播放、打包下载，可选账号与按路径的读写权限",
+      "repository": "heyplanet-app/satellite-files",
+      "asset": "files.satellite"
+    },
+    {
+      "id": "simple-git-server",
+      "name": "Simple Git",
+      "description": "轻量的类 GitHub Git 托管：Smart HTTP 的 clone/fetch/push、代码浏览、在线编辑、Issues 与 Pull Requests",
+      "repository": "heyplanet-app/satellite-simple-git-server",
+      "asset": "simple-git-server.satellite"
+    },
+    {
+      "id": "checklist",
+      "name": "Checklist",
+      "description": "轻量的 Web 待办与日常打卡：按日期的待办、周期模板自动生成",
+      "repository": "heyplanet-app/satellite-checklist",
+      "asset": "checklist.satellite"
+    },
+    {
+      "id": "satellite-ssh",
+      "name": "SSH Client",
+      "description": "网页版 SSH/SFTP 客户端：会话常驻、首次信任主机密钥、Passkey 登录、xterm.js 终端",
+      "repository": "heyplanet-app/satellite-ssh",
+      "asset": "satellite-ssh.satellite"
+    }
+  ]
+}

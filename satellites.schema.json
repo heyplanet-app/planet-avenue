@@ -1,0 +1,53 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Planet Avenue",
+    "description": "The satellites planet's app store lists (crates/planet-web/src/store.rs in the planet repository). Each is installed from the newest GitHub release of its repository that carries its asset.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["schemaVersion", "satellites"],
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "schemaVersion": {
+            "const": "v1"
+        },
+        "satellites": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/satellite"
+            }
+        }
+    },
+    "$defs": {
+        "satellite": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "repository", "asset"],
+            "properties": {
+                "id": {
+                    "description": "This entry's id on the list, unique within it.",
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*$"
+                },
+                "name": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "description": {
+                    "type": "string"
+                },
+                "repository": {
+                    "description": "owner/name on GitHub.",
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+                },
+                "asset": {
+                    "description": "The release asset to install. Its file name names the app once installed (app id = the name without .satellite).",
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_.-]+\\.satellite$"
+                }
+            }
+        }
+    }
+}
