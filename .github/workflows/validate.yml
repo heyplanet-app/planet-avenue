@@ -1,4 +1,5 @@
-# Checks satellites.json on every push and pull request.
+# Checks apps.json on every push and pull request. Publishing is Cloudflare
+# Pages' own: it serves this repository as-is at avenue.heyplanet.app.
 name: Validate
 
 on:
