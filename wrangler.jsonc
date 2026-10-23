@@ -1,0 +1,15 @@
+// Cloudflare Workers Builds (connected to this repository):
+//   Build command:  (none)
+//   Deploy command: npx wrangler deploy
+// Serves this repository as static files — apps.json is the site — at
+// avenue.heyplanet.app. What isn't part of the site is in .assetsignore.
+{
+  "name": "planet-avenue",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "."
+  },
+  "routes": [
+    { "pattern": "avenue.heyplanet.app", "custom_domain": true }
+  ]
+}

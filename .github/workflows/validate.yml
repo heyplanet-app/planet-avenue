@@ -1,5 +1,6 @@
-# Checks apps.json on every push and pull request. Publishing is Cloudflare
-# Pages' own: it serves this repository as-is at avenue.heyplanet.app.
+# Checks apps.json on every push and pull request. Publishing is
+# Cloudflare's own (Workers Builds, wrangler.jsonc): it serves this
+# repository as-is at avenue.heyplanet.app.
 name: Validate
 
 on:

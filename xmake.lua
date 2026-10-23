@@ -1,5 +1,5 @@
 -- Planet Avenue: the satellites planet's app store lists, published as-is at
--- https://avenue.heyplanet.app/apps.json (Cloudflare Pages).
+-- https://avenue.heyplanet.app/apps.json (Cloudflare, wrangler.jsonc).
 --
 --   xmake validate        check apps.json
 --

@@ -1,7 +1,10 @@
 # Planet Avenue
 
-planet 应用库里列出的 satellite：<https://avenue.heyplanet.app/apps.json>，由
-Cloudflare Pages 直接发布这个仓库。
+planet 应用库里列出的 satellite：<https://avenue.heyplanet.app/apps.json>。
+
+Cloudflare Workers Builds 连接这个仓库，构建命令留空，部署命令 `npx wrangler deploy`
+（读 `wrangler.jsonc`：仓库作为静态资源原样发布，`.assetsignore` 里的不发布，域名由
+配置绑定）。
 
 `apps.json` 是 GitHub 仓库地址的列表，别的都由 planet 从仓库里读（planet 仓库的
 `crates/planet-web/src/store.rs`）：
